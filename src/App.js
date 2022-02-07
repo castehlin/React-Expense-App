@@ -1,4 +1,6 @@
-import ExpenseItem from './components/ExpenseItem'
+import ExpenseItem from './components/ExpenseItem';
+import ExpenseTotal from './components/ExpenseTotal';
+
 function App () {
   const expenses = [
     {
@@ -45,8 +47,16 @@ function App () {
         amount={expenses[3].amount}
         date={expenses[3].date}
       />
+      <ExpenseTotal
+        totalAmount={
+          expenses[0].amount +
+          expenses[1].amount +
+          expenses[2].amount +
+          expenses[3].amount
+        }
+      />
     </div>
   )
 }
 
-export default App;
+export default App
