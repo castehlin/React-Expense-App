@@ -1,6 +1,12 @@
-import Expenses from './components/expenses/Expenses';
-import NewExpense from './components/newExpense/NewExpense';
+import Expenses from './components/expenses/Expenses'
+import NewExpense from './components/newExpense/NewExpense'
 function App () {
+  const addExpenseDataHandler = recievedExpenseData => {
+    const expenseData = {
+      ...recievedExpenseData,
+    }
+    console.log(expenseData);
+  }
   const expenses = [
     {
       id: 'e1',
@@ -25,10 +31,10 @@ function App () {
 
   return (
     <div>
-      <NewExpense/>
-      <Expenses items={expenses}/> 
+      <NewExpense sendExpenseDataUp={addExpenseDataHandler} />
+      <Expenses items={expenses} />
     </div>
   )
 }
 
-export default App;
+export default App

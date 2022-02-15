@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './ExpenseForm.css'
 
-const ExpenseForm = () => {
+const ExpenseForm = props => {
   //Individual state method, chose to use the single state object approach insteaad but left this here for reference
   //const [enteredTitle, setEnteredTitle] = useState('');
   //const [enteredAmount, setEnteredAmount] = useState('');
@@ -49,7 +49,7 @@ const ExpenseForm = () => {
 
   const submitHandler = event => {
     event.preventDefault() //stops reload of component when form onSubmit is triggered. We have no need to rerender and we want to keep the gathered data, so this is useful in this circumstance.
-    console.log(userInput)
+    props.onSaveExpenseData(userInput) //data that was entered by user is passed up to the onSaveExpenseData function in the parent component, NewExpense
 
     //reset form fields to default empty
     setUserInput(prevState => {
@@ -57,8 +57,7 @@ const ExpenseForm = () => {
         ...prevState,
         enteredTitle: '',
         enteredAmount: '',
-        enteredDate: '',
-        
+        enteredDate: ''
       }
     })
   }
